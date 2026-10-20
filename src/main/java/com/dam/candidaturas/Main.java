@@ -1,17 +1,31 @@
 package com.dam.candidaturas;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    static void main() {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        IO.println(String.format("Hello and welcome!"));
+import com.dam.candidaturas.command.Command;
+import com.dam.candidaturas.command.CommandFactory;
+import com.dam.candidaturas.repository.CandidaturaRepository;
+import com.dam.candidaturas.repository.FileCandidaturaRepository;
+import com.dam.candidaturas.service.CandidaturaService;
+import com.dam.candidaturas.view.ConsoleView;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            IO.println("i = " + i);
+import java.nio.file.Path;
+
+public class Main {
+    public static void main(String[] args) {
+        ConsoleView view = new ConsoleView();
+
+        try {
+            Path rutaArchivo = Path.of("candidaturas.txt");
+            CandidaturaRepository repository = new FileCandidaturaRepository(rutaArchivo);
+            CandidaturaService service = new CandidaturaService(repository);
+            CommandFactory factory = new CommandFactory(service, view);
+
+            Command comando = factory.parse(args);
+            comando.execute();
+
+        } catch (IllegalArgumentException e) {
+            view.mostrarError(e.getMessage());
+        } catch (Exception e) {
+            view.mostrarError("Ocurrió un error inesperado al procesar la operación: " + e.getMessage());
         }
     }
 }
