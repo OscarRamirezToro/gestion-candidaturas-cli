@@ -1,6 +1,6 @@
-package com.dam.candidaturas.repository;
+package com.dam.jobtrack.repository;
 
-import com.dam.candidaturas.model.Candidatura;
+import com.dam.jobtrack.model.Candidatura;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;

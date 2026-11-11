@@ -1,6 +1,6 @@
-package com.dam.candidaturas.view;
+package com.dam.jobtrack.view;
 
-import com.dam.candidaturas.model.Candidatura;
+import com.dam.jobtrack.model.Candidatura;
 import java.util.List;
 
 public class ConsoleView {

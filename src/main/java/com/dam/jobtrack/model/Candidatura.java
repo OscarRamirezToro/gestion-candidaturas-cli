@@ -1,4 +1,4 @@
-package com.dam.candidaturas.model;
+package com.dam.jobtrack.model;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;

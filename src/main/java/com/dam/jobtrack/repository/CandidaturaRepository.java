@@ -1,6 +1,6 @@
-package com.dam.candidaturas.repository;
+package com.dam.jobtrack.repository;
 
-import com.dam.candidaturas.model.Candidatura;
+import com.dam.jobtrack.model.Candidatura;
 import java.io.IOException;
 import java.util.List;
 import java.util.Optional;

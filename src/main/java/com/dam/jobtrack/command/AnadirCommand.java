@@ -1,8 +1,8 @@
-package com.dam.candidaturas.command;
+package com.dam.jobtrack.command;
 
-import com.dam.candidaturas.model.Candidatura;
-import com.dam.candidaturas.service.CandidaturaService;
-import com.dam.candidaturas.view.ConsoleView;
+import com.dam.jobtrack.model.Candidatura;
+import com.dam.jobtrack.service.CandidaturaService;
+import com.dam.jobtrack.view.ConsoleView;
 import java.time.LocalDate;
 
 public class AnadirCommand implements Command {

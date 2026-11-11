@@ -1,11 +1,11 @@
-package com.dam.candidaturas;
+package com.dam.jobtrack;
 
-import com.dam.candidaturas.command.Command;
-import com.dam.candidaturas.command.CommandFactory;
-import com.dam.candidaturas.repository.CandidaturaRepository;
-import com.dam.candidaturas.repository.FileCandidaturaRepository;
-import com.dam.candidaturas.service.CandidaturaService;
-import com.dam.candidaturas.view.ConsoleView;
+import com.dam.jobtrack.command.Command;
+import com.dam.jobtrack.command.CommandFactory;
+import com.dam.jobtrack.repository.CandidaturaRepository;
+import com.dam.jobtrack.repository.FileCandidaturaRepository;
+import com.dam.jobtrack.service.CandidaturaService;
+import com.dam.jobtrack.view.ConsoleView;
 
 import java.nio.file.Path;
 
