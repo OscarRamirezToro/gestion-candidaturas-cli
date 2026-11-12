@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane prefHeight="720.0" prefWidth="1100.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.jobtrack.controller.ListadoOfertasController">
+    <left>
+        <VBox prefWidth="230.0" spacing="10.0" styleClass="sidebar">
+            <padding>
+                <Insets bottom="20.0" left="15.0" right="15.0" top="25.0" />
+            </padding>
+            <children>
+                <Label styleClass="sidebar-title" text="JobTrack v2.0" />
+                <Separator opacity="0.2" />
+                <Button maxWidth="Infinity" styleClass="sidebar-btn" text="📋 Ofertas" />
+                <Button maxWidth="Infinity" onAction="#handleAbrirEmpresas" styleClass="sidebar-btn" text="🏢 Empresas" />
+                <Button maxWidth="Infinity" onAction="#handleAbrirEntrevistas" styleClass="sidebar-btn" text="📅 Entrevistas" />
+                <Spacer VBox.vgrow="ALWAYS" />
+                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11px;" text="Óscar Ramírez Toro" />
+                <Label style="-fx-text-fill: #64748B; -fx-font-size: 11px;" text="Juan A. Moreno Hevilla" />
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <VBox spacing="15.0">
+            <padding>
+                <Insets bottom="25.0" left="30.0" right="30.0" top="25.0" />
+            </padding>
+            <children>
+                <HBox alignment="CENTER_LEFT" spacing="15.0">
+                    <children>
+                        <VBox HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" text="Gestión de Ofertas y Candidaturas" />
+                                <Label style="-fx-font-size: 13px; -fx-text-fill: #64748B;" text="Consulta, filtra y gestiona el estado de tus postulaciones laborales." />
+                            </children>
+                        </VBox>
+                        <Button onAction="#handleImportarCsv" styleClass="btn-secondary" text="📥 Importar CSV" />
+                        <Button onAction="#handleNuevaOferta" styleClass="btn-primary" text="+ Nueva Oferta" />
+                    </children>
+                </HBox>
+
+                <HBox alignment="CENTER_LEFT" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-padding: 12px; -fx-background-radius: 8px; -fx-border-color: #E2E8F0; -fx-border-radius: 8px;">
+                    <children>
+                        <TextField fx:id="txtFiltroEmpresa" promptText="Filtrar por empresa..." HBox.hgrow="ALWAYS" />
+                        <ComboBox fx:id="comboFiltroEstado" prefWidth="150.0" promptText="Estado" />
+                        <TextField fx:id="txtFiltroSalario" prefWidth="120.0" promptText="Salario mín..." />
+                        <DatePicker fx:id="dpFiltroFecha" prefWidth="140.0" promptText="Desde fecha..." />
+                        <Button onAction="#handleFiltrar" styleClass="btn-primary" text="Buscar" />
+                        <Button onAction="#handleLimpiarFiltros" styleClass="btn-secondary" text="Limpiar" />
+                    </children>
+                </HBox>
+
+                <TableView fx:id="tablaOfertas" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colId" prefWidth="60.0" text="ID" />
+                        <TableColumn fx:id="colTitulo" prefWidth="240.0" text="Puesto / Título" />
+                        <TableColumn fx:id="colEmpresa" prefWidth="180.0" text="Empresa" />
+                        <TableColumn fx:id="colEstado" prefWidth="120.0" text="Estado" />
+                        <TableColumn fx:id="colFecha" prefWidth="110.0" text="Fecha" />
+                        <TableColumn fx:id="colSalario" prefWidth="100.0" text="Salario (€)" />
+                    </columns>
+                </TableView>
+
+                <HBox alignment="CENTER_RIGHT" spacing="10.0">
+                    <children>
+                        <Button onAction="#handleVerDetalle" styleClass="btn-secondary" text="Ver Detalle Completo" />
+                        <Button onAction="#handleCambiarEstado" styleClass="btn-secondary" text="Actualizar Estado" />
+                        <Button onAction="#handleEliminar" styleClass="btn-danger" text="Eliminar Oferta" />
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </center>
+</BorderPane>

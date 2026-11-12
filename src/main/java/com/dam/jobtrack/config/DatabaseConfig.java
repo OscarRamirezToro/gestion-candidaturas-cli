@@ -16,7 +16,7 @@ public class DatabaseConfig {
 
     static {
         Properties props = new Properties();
-        try (InputStream is = DatabaseConfig.class.getClassLoader().getResourceAsStream("config.properties")) {
+        try (InputStream is = DatabaseConfig.class.getClassLoader().getResourceAsStream("com/dam/jobtrack/config.properties")) {
             if (is == null) {
                 throw new DatabaseException("No se encontró el archivo config.properties en resources");
             }
