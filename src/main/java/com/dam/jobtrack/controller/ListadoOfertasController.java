@@ -118,7 +118,7 @@ public class ListadoOfertasController implements Initializable {
             mostrarAlerta(Alert.AlertType.WARNING, "Selección requerida", "Selecciona una oferta de la tabla.");
             return;
         }
-        App.abrirDetalleOferta(seleccionada);
+        App.abrirDetalleOferta(seleccionada, this);
     }
 
     @FXML

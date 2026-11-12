@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="660.0" prefWidth="820.0" spacing="18.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.jobtrack.controller.DetalleOfertaController">
+    <padding>
+        <Insets bottom="25.0" left="30.0" right="30.0" top="25.0" />
+    </padding>
+    <children>
+        <!-- Cabecera de detalle -->
+        <HBox alignment="CENTER_LEFT" spacing="15.0">
+            <children>
+                <VBox HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label fx:id="lblTituloOferta" style="-fx-font-size: 22px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" text="Título del Puesto" />
+                        <Label fx:id="lblSubtituloOferta" style="-fx-font-size: 13px; -fx-text-fill: #64748B;" text="ID #0 • Fecha de postulación" />
+                    </children>
+                </VBox>
+                <Label fx:id="lblEstadoBadge" style="-fx-background-color: #DBEAFE; -fx-text-fill: #1D4ED8; -fx-font-weight: bold; -fx-padding: 6 14 6 14; -fx-background-radius: 14px;" text="En proceso" />
+            </children>
+        </HBox>
+
+        <Separator />
+
+        <!-- Bloque superior en 2 tarjetas: Datos de Oferta y Datos de Empresa -->
+        <HBox spacing="15.0">
+            <children>
+                <!-- Tarjeta 1: Datos de la Postulación -->
+                <VBox spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-padding: 16px; -fx-background-radius: 8px; -fx-border-color: #E2E8F0; -fx-border-radius: 8px;" HBox.hgrow="ALWAYS">
+                    <children>
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" text="Información de la Oferta" />
+                        <GridPane hgap="10.0" vgap="8.0">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="95.0" prefWidth="95.0" />
+                                <ColumnConstraints hgrow="ALWAYS" />
+                            </columnConstraints>
+                            <children>
+                                <Label style="-fx-text-fill: #64748B; -fx-font-weight: bold;" text="Salario:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label fx:id="lblSalario" text="No especificado" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                <Label style="-fx-text-fill: #64748B; -fx-font-weight: bold;" text="Enlace:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <Hyperlink fx:id="linkEnlace" onAction="#handleAbrirEnlace" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            </children>
+                        </GridPane>
+                        <Label style="-fx-text-fill: #64748B; -fx-font-weight: bold;" text="Descripción:" />
+                        <TextArea fx:id="txtDescripcion" editable="false" prefHeight="65.0" wrapText="true" />
+                    </children>
+                </VBox>
+
+                <!-- Tarjeta 2: Empresa Asociada -->
+                <VBox prefWidth="310.0" spacing="10.0" style="-fx-background-color: #FFFFFF; -fx-padding: 16px; -fx-background-radius: 8px; -fx-border-color: #E2E8F0; -fx-border-radius: 8px;">
+                    <children>
+                        <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" text="Empresa Asociada" />
+                        <GridPane hgap="10.0" vgap="8.0">
+                            <columnConstraints>
+                                <ColumnConstraints minWidth="75.0" prefWidth="75.0" />
+                                <ColumnConstraints hgrow="ALWAYS" />
+                            </columnConstraints>
+                            <children>
+                                <Label style="-fx-text-fill: #64748B; -fx-font-weight: bold;" text="Nombre:" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                                <Label fx:id="lblEmpresaNombre" style="-fx-font-weight: bold;" text="-" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                                <Label style="-fx-text-fill: #64748B; -fx-font-weight: bold;" text="Sector:" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                                <Label fx:id="lblEmpresaSector" text="-" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                                <Label style="-fx-text-fill: #64748B; -fx-font-weight: bold;" text="Web:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                                <Label fx:id="lblEmpresaWeb" text="-" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            </children>
+                        </GridPane>
+                    </children>
+                </VBox>
+            </children>
+        </HBox>
+
+        <!-- Bloque inferior: Entrevistas asociadas y Notas -->
+        <VBox spacing="8.0" style="-fx-background-color: #FFFFFF; -fx-padding: 16px; -fx-background-radius: 8px; -fx-border-color: #E2E8F0; -fx-border-radius: 8px;" VBox.vgrow="ALWAYS">
+            <children>
+                <Label style="-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" text="Historial de Entrevistas Asociadas" />
+                <TableView fx:id="tablaEntrevistas" prefHeight="145.0" VBox.vgrow="ALWAYS">
+                    <columns>
+                        <TableColumn fx:id="colEntFecha" prefWidth="110.0" text="Fecha" />
+                        <TableColumn fx:id="colEntTipo" prefWidth="140.0" text="Tipo" />
+                        <TableColumn fx:id="colEntResultado" prefWidth="130.0" text="Resultado" />
+                        <TableColumn fx:id="colEntNotas" prefWidth="360.0" text="Observaciones" />
+                    </columns>
+                </TableView>
+
+                <Label style="-fx-text-fill: #64748B; -fx-font-weight: bold;" text="Notas de seguimiento:" />
+                <TextArea fx:id="txtNotas" editable="false" prefHeight="55.0" wrapText="true" />
+            </children>
+        </VBox>
+
+        <!-- Botonera inferior -->
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Button onAction="#handleEditarOferta" styleClass="btn-primary" text="Editar Candidatura" />
+                <Button onAction="#handleCerrar" styleClass="btn-secondary" text="Cerrar" />
+            </children>
+        </HBox>
+    </children>
+</VBox>
