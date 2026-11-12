@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="610.0" prefWidth="640.0" spacing="16.0" stylesheets="@estilos.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.dam.jobtrack.controller.FormularioOfertaController">
+    <padding>
+        <Insets bottom="25.0" left="30.0" right="30.0" top="25.0" />
+    </padding>
+    <children>
+        <Label fx:id="lblTituloFormulario" style="-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #0F172A;" text="Nueva Oferta / Candidatura" />
+        <Label style="-fx-font-size: 13px; -fx-text-fill: #64748B;" text="Completa los campos obligatorios marcados con (*)." />
+        <Separator />
+
+        <GridPane hgap="15.0" vgap="12.0">
+            <columnConstraints>
+                <ColumnConstraints minWidth="130.0" prefWidth="130.0" />
+                <ColumnConstraints hgrow="ALWAYS" />
+            </columnConstraints>
+            <children>
+                <Label style="-fx-font-weight: bold;" text="Título del puesto (*):" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+                <TextField fx:id="txtTitulo" promptText="Ej: Desarrollador Java Backend" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+
+                <Label style="-fx-font-weight: bold;" text="Empresa (*):" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+                <ComboBox fx:id="comboEmpresa" maxWidth="Infinity" promptText="Selecciona una empresa..." GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                <Label style="-fx-font-weight: bold;" text="Estado (*):" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+                <ComboBox fx:id="comboEstado" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                <Label style="-fx-font-weight: bold;" text="Fecha postulación (*):" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+                <DatePicker fx:id="dpFecha" maxWidth="Infinity" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+
+                <Label style="-fx-font-weight: bold;" text="Salario anual (€):" GridPane.columnIndex="0" GridPane.rowIndex="4" />
+                <TextField fx:id="txtSalario" promptText="Ej: 28000.00" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                <Label style="-fx-font-weight: bold;" text="Enlace de la oferta:" GridPane.columnIndex="0" GridPane.rowIndex="5" />
+                <TextField fx:id="txtEnlace" promptText="https://..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            </children>
+        </GridPane>
+
+        <VBox spacing="6.0">
+            <children>
+                <Label style="-fx-font-weight: bold;" text="Descripción del puesto:" />
+                <TextArea fx:id="txtDescripcion" prefHeight="70.0" promptText="Tecnologías, requisitos principales, modalidad..." wrapText="true" />
+            </children>
+        </VBox>
+
+        <VBox spacing="6.0" VBox.vgrow="ALWAYS">
+            <children>
+                <Label style="-fx-font-weight: bold;" text="Notas personales:" />
+                <TextArea fx:id="txtNotas" prefHeight="65.0" promptText="Persona de contacto, sensaciones..." wrapText="true" />
+            </children>
+        </VBox>
+
+        <HBox alignment="CENTER_RIGHT" spacing="10.0">
+            <children>
+                <Button onAction="#handleCancelar" styleClass="btn-secondary" text="Cancelar" />
+                <Button fx:id="btnGuardar" onAction="#handleGuardar" styleClass="btn-primary" text="Guardar Candidatura" />
+            </children>
+        </HBox>
+    </children>
+</VBox>

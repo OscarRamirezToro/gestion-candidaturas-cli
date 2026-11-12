@@ -1,6 +1,7 @@
 package com.dam.jobtrack.App;
 
 import com.dam.jobtrack.controller.DetalleOfertaController;
+import com.dam.jobtrack.controller.FormularioOfertaController;
 import com.dam.jobtrack.controller.ListadoOfertasController;
 import com.dam.jobtrack.model.Oferta;
 import javafx.application.Application;
@@ -51,7 +52,23 @@ public class App extends Application {
     }
 
     public static void abrirFormularioOferta(Oferta oferta, ListadoOfertasController listener) {
-        // Conexión para el Commit 6
+        try {
+            FXMLLoader loader = new FXMLLoader(App.class.getResource("/com/dam/jobtrack/view/FormularioOferta.fxml"));
+            Parent root = loader.load();
+
+            FormularioOfertaController controller = loader.getController();
+            controller.setDatos(oferta, listener);
+
+            Stage modal = new Stage();
+            modal.setTitle(oferta == null ? "Nueva Candidatura" : "Editar Candidatura #" + oferta.getId());
+            modal.initModality(Modality.WINDOW_MODAL);
+            modal.initOwner(primaryStage);
+            modal.setScene(new Scene(root));
+            modal.showAndWait();
+        } catch (IOException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR, "No se pudo abrir el formulario de ofertas.");
+            alert.showAndWait();
+        }
     }
 
     public static void abrirVentanaEmpresas() {
